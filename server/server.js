@@ -60,8 +60,10 @@ routerConfig.get("/", (req, res) => {
 });
 
 app.use("/", express.static(public));
-app.use(prefix, express.static(public));
-app.get("*", (req, res) => {
+app.use(`${prefix}`, express.static(public));
+
+
+app.get(`${prefix}/*`, (req, res) => {
   res.sendFile(path.resolve(public, "index.html"));
 });
 
